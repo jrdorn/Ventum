@@ -1,4 +1,4 @@
-package com.example.myapp
+package com.initial.ventum
 
 import org.junit.Test
 

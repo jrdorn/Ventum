@@ -19,6 +19,11 @@ android {
         }
     }
 
+    // bind UI components in XML layout with app data repos
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -43,9 +48,27 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    buildToolsVersion '32.0.0'
 }
 
 dependencies {
+
+    //MVVM lifecycle dependency
+    implementation("android.arch.lifecycle:extensions:1.1.1")
+
+    //viewModels
+    implementation "androidx.activity:activity-ktx:1.4.0"
+    implementation "androidx.fragment:fragment-ktx:1.4.1"
+
+    //CoinGecko
+    implementation("org.drewcarlson:coingecko:$coingecko_version")
+    implementation("io.ktor:ktor-client-okhttp:$ktor_version")
+    implementation("io.ktor:ktor-client-android:$ktor_version")
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation "androidx.compose.ui:ui:$compose_version"

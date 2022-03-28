@@ -18,7 +18,7 @@ class OverviewViewModel : ViewModel() {
     // The external immutable LiveData for the request status
     val status: LiveData<String> = _status
     /**
-     * Call getPrices() on init so we can display status immediately.
+     * Call getPrices() on init so we can display status immediately
      */
     init {
         getPrices()
@@ -28,10 +28,15 @@ class OverviewViewModel : ViewModel() {
      * Gets Crypto prices information from the CoinGecko API Retrofit service and updates the
      * [CryptoPrices] [List] [LiveData].
      */
-    private fun getCryptoPrices() {
+    private fun getPrices() {
         viewModelScope.launch{
-            val listResult = CoinApi.retrofitService.getPrices()
-            _status.value = listResult
+            try {
+                val listResult = CoinApi.retrofitService.getPrices()
+                _status.value = listResult
+            } catch (e: Exception) {
+                _status.value = "Failure: ${e.message}"
+            }
+
         }
     }
 }

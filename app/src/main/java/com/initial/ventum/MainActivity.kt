@@ -24,22 +24,7 @@ import drewcarlson.coingecko.CoinGeckoClient
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            VentumTheme {
-                // Surface container using the 'background' color from theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    // Message card component
-                    MessageCard(
-                        msg = Message("John Johnson", "Here is some body text")
-                    )
-                }
-
-
-            }
-        }
+        setContentView(R.layout.activity_main)
     }
 }
 
@@ -99,15 +84,16 @@ fun MessageCard(msg: Message) {
     }
 }
 
-// Preview composable functions
-@Preview(
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-    showBackground = true,
-    name = "Dark Mode"
-)
-@Composable
-fun DefaultPreview() {
-    VentumTheme {
-        //BtcMarketView()
-    }
-}
+//// Preview composable functions
+//@Preview(
+//    uiMode = Configuration.UI_MODE_NIGHT_YES,
+//    showBackground = true,
+//    name = "Dark Mode"
+//)
+//@Composable
+//fun DefaultPreview() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_main)
+//    }
+//}

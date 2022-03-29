@@ -1,48 +1,32 @@
 package com.initial.ventum.market
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.initial.ventum.network.CoinApi
+import com.initial.ventum.network.CoinApiService
 import com.initial.ventum.network.CoinData
 import kotlinx.coroutines.launch
 
-// status of the CoinGecko API call
-enum class CoinApiStatus { LOADING, ERROR, DONE }
 
-// VieModel attached to MarketFragment
-class OverviewViewModel : ViewModel() {
+//
+class MarketViewModel : ViewModel() {
+    private val _coinDataList = mutableStateListOf<CoinData>()
+    var errorMessage: String by mutableStateOf("")
+    val coinDataList: List<CoinData>
+        get() = _coinDataList
 
-    // Store last request status
-    private val _status = MutableLiveData<CoinApiStatus>()
-
-    // External immutable data for request status
-    val status: LiveData<CoinApiStatus> = _status
-
-    // Internal mutable data for updating CoinData class with new values
-    private val _data = MutableLiveData<List<CoinData>>()
-
-    // External immutable data for coin value
-    val data: LiveData<List<CoinData>> = _data
-
-    // Display results of API call on app load
-    init {
-        getCoinData()
-    }
-
-
-    // Get Coin data from Retrofit and update CoinData, List, and LiveData
-    private fun getCoinData() {
-
+    fun getTodoList() {
         viewModelScope.launch {
-            _status.value = CoinApiStatus.LOADING
+            val apiService = CoinApiService.getInstance()
             try {
-                _data.value = CoinApi.retrofitService.getData()
-                _status.value = CoinApiStatus.DONE
+                _coinDataList.clear()
+                _coinDataList.addAll(apiService.getData())
+
             } catch (e: Exception) {
-                _status.value = CoinApiStatus.ERROR
-                _data.value = listOf()
+                errorMessage = e.message.toString()
             }
         }
     }

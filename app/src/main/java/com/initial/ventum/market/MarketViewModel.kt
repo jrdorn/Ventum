@@ -23,7 +23,9 @@ class MarketViewModel : ViewModel() {
             val apiService = CoinApiService.getInstance()
             try {
                 _coinDataList.clear()
-                _coinDataList.addAll(apiService.getData())
+                _coinDataList.addAll(apiService.getBtc())
+                _coinDataList.addAll(apiService.getEth())
+                _coinDataList.addAll(apiService.getSol())
 
             } catch (e: Exception) {
                 errorMessage = e.message.toString()

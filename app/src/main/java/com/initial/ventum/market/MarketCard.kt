@@ -32,10 +32,21 @@ import com.initial.ventum.network.CoinData
 @Composable
 fun MarketCard(crypto: CoinData) {
     // horizontal image with padding
+
+
+
+
+
     Row(modifier = Modifier.padding(all = 8.dp)) {
+
+        // initialize drawable crypto logo and set to specific name
+        var cryptoLogo = painterResource(R.drawable.bitcoin_logo)
+        if (crypto.name == "Ethereum") cryptoLogo = painterResource(R.drawable.ethereum_logo)
+        if (crypto.name == "Solana") cryptoLogo = painterResource(R.drawable.solana_logo)
+
         Image(
-            painter = painterResource(R.drawable.bitcoin_logo),
-            contentDescription = "Bitcoin logo",
+            painter = cryptoLogo,
+            contentDescription = crypto.name + " logo",
             modifier = Modifier
                 .size(40.dp) // set image size to 40 dp
                 .clip(CircleShape) //clip image to circle

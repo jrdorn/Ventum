@@ -28,10 +28,10 @@ val cards: List<Bitcoin> = adapter.fromJson(bitcoinJsonResponse)
 // expose getData method, return List of CoinData
 interface CoinApiService {
 
- // @GET: specific crypto endpoint will be requested with HTTP GET
+ // @GET: request specific crypto endpoints with HTTP GET
 
  @GET("markets?vs_currency=usd&ids=bitcoin")
- suspend fun getData(): List<CoinData>
+ suspend fun getBtc(): List<CoinData>
 
  @GET("markets?vs_currency=usd&ids=ethereum")
  suspend fun getEth(): List<CoinData>

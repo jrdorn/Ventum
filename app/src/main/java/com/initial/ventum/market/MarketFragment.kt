@@ -1,4 +1,4 @@
-package com.initial.ventum
+package com.initial.ventum.market
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,17 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.initial.ventum.databinding.FragmentOverviewBinding
 
-/**
- * This fragment shows the results of a CoinGecko API call
- */
-class CoinFragment : Fragment() {
+
+// display status of coin data
+class OverviewFragment : Fragment() {
 
     private val viewModel: OverviewViewModel by viewModels()
 
-    /**
-     * Inflates the layout with Data Binding, sets its lifecycle owner to the OverviewFragment
-     * to enable Data Binding to observe LiveData, and sets up the RecyclerView with an adapter.
-     */
+    // enable data binding to observe LiveData
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +26,9 @@ class CoinFragment : Fragment() {
 
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel
+
+        // Sets the adapter of the photosGrid RecyclerView
+        binding.photosGrid.adapter = PhotoGridAdapter()
 
         return binding.root
     }

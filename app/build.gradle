@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -65,9 +66,17 @@ dependencies {
     implementation("io.ktor:ktor-client-okhttp:$ktor_version")
     implementation("io.ktor:ktor-client-android:$ktor_version")
 
-    // Retrofit
+    // Retrofit with Moshi JSON converter
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+
+    // Moshi library for parsing JSON
+    implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
+
+    // Display large data sets with minimal memory
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
+
 
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
@@ -77,6 +86,7 @@ dependencies {
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'androidx.activity:activity-compose:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

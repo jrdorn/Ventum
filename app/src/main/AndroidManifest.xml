@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.initial.ventum">
 
+    <!-- enable app to access internet to make API calls -->
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application

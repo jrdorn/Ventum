@@ -19,16 +19,31 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.initial.ventum.ui.theme.VentumTheme
 import drewcarlson.coingecko.CoinGeckoClient
+import androidx.appcompat.app.AppCompatActivity
 
-// App entry point
-class MainActivity : ComponentActivity() {
+// App entry point: sets initial view to activity_main, which contains a fragment to display the results of an API call
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_main)
+        setContent {
+            VentumTheme {
+                // A surface container using the 'background' color from the theme
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    Greeting("Android")
+                }
+            }
+        }
     }
 }
 
-
+@Composable
+fun Greeting(name: String) {
+    Text(text = "Gm $name!")
+}
 
 
 // Navigate current price of Bitcoin, Eth, and Solana

@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //
         val vm = MarketViewModel()
-        //
+
         super.onCreate(savedInstanceState)
         setContent {
             VentumTheme {
@@ -25,10 +25,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    //Greeting("Android")
                     //
                     MarketView(vm)
-                    //
                 }
             }
         }

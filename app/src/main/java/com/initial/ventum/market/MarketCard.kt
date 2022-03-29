@@ -1,7 +1,5 @@
 package com.initial.ventum.market
 
-
-
 import  com.initial.ventum.R
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
@@ -15,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.initial.ventum.network.CoinData
 
 // Navigate current price of Bitcoin, Eth, and Solana
 //@Composable
@@ -26,18 +25,12 @@ import androidx.compose.ui.unit.dp
 //    }
 //}
 
-// Say good morning to user
-@Composable
-fun GoodMorning(user: String) {
-    Text(text = "Gm $user!")
-}
 
-// Message object that takes an author and body text as params
-data class Message(val author: String, val body: String)
 
-// Print a message card
+
+// Print a card containing coin data
 @Composable
-fun MessageCard(msg: Message) {
+fun MarketCard(crypto: CoinData) {
     // horizontal image with padding
     Row(modifier = Modifier.padding(all = 8.dp)) {
         Image(
@@ -52,19 +45,20 @@ fun MessageCard(msg: Message) {
         // add horizontal gap between image and text
         Spacer(modifier = Modifier.width(8.dp))
 
-        // vertical author and message body
+        // vertical name and price body
         Column {
             Text(
-                text = msg.author,
+                text = crypto.name,
                 color = MaterialTheme.colors.secondaryVariant,
                 style = MaterialTheme.typography.subtitle2
             )
 
             Spacer(modifier = Modifier.height(4.dp)) // add vertical space between author and body
 
+            //
             Surface(shape = MaterialTheme.shapes.medium, elevation = 1.dp){
                 Text(
-                    text = msg.body,
+                    text = "$" + crypto.currentPrice.toString(),
                     modifier = Modifier.padding(all = 4.dp), // add message padding
                     style = MaterialTheme.typography.body2
                 )

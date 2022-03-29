@@ -17,49 +17,33 @@ fun MarketView(vm: MarketViewModel) {
 
     //
     LaunchedEffect(Unit, block = {
-        vm.getTodoList()
+        vm.getCoinDataList()
     })
 
+    //
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Row {
-                        Text("Coins")
+                        Text("Crypto Market")
                     }
                 })
         },
+        //
         content = {
             if (vm.errorMessage.isEmpty()) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     LazyColumn(modifier = Modifier.fillMaxHeight()) {
+                        //
                         items(vm.coinDataList) { coin ->
-                            Column {
-                                Row(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(16.dp),
-                                    horizontalArrangement = Arrangement.SpaceBetween
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .padding(0.dp, 0.dp, 16.dp, 0.dp)
-                                    ) {
-                                        Text(
-                                            coin.currentPrice.toString(),
-                                            maxLines = 1,
-                                            overflow = TextOverflow.Ellipsis
-                                        )
-                                    }
-                                    Spacer(modifier = Modifier.width(16.dp))
-                                }
-                                Divider()
-                            }
+                            MarketCard( coin )
+
                         }
                     }
                 }
             } else {
+                //
                 Text(vm.errorMessage)
             }
         }

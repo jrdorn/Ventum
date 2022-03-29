@@ -18,18 +18,26 @@ private val moshi = Moshi.Builder()
 /**
 MOSHI parse JSON array
 
-val cardsJsonResponse: String = ...
-// We can just use a reified extension!
-val adapter = moshi.adapter<List<Card>>()
-val cards: List<Card> = adapter.fromJson(cardsJsonResponse)
+val bitcoinJsonResponse: String = ...
+//  use a reified extension!
+val adapter = moshi.adapter<List<Bitcoin>>()
+val cards: List<Bitcoin> = adapter.fromJson(bitcoinJsonResponse)
 
  * */
 
 // expose getData method, return List of CoinData
 interface CoinApiService {
 
- @GET("markets?vs_currency=usd&ids=bitcoin")  // @GET: "bitcoin" endpoint will be requested with HTTP GET
+ // @GET: specific crypto endpoint will be requested with HTTP GET
+
+ @GET("markets?vs_currency=usd&ids=bitcoin")
  suspend fun getData(): List<CoinData>
+
+ @GET("markets?vs_currency=usd&ids=ethereum")
+ suspend fun getEth(): List<CoinData>
+
+ @GET("markets?vs_currency=usd&ids=solana")
+ suspend fun getSol(): List<CoinData>
 
  //
  companion object {

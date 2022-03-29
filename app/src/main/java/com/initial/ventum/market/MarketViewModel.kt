@@ -18,7 +18,7 @@ class MarketViewModel : ViewModel() {
     val coinDataList: List<CoinData>
         get() = _coinDataList
 
-    fun getTodoList() {
+    fun getCoinDataList() {
         viewModelScope.launch {
             val apiService = CoinApiService.getInstance()
             try {

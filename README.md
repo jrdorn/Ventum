@@ -21,9 +21,7 @@ fund scientists researching and developing treatments to diseases affecting them
 
 ## Challenge notes
 
-Prior to Ventum I had never written code in Kotlin. The greatest challenge was setting up the emulator, and I was 
-
-I chose Android Studio over Intellij IDEA, as the Android dev features will always be the latest relative to Android plugin in IntelliJ, it itself is a fork of IntelliJ optimized for Android development with an embedded JDK, Android hierarchy in project view, and new project wizard.
+Prior to Ventum I had never written code in Kotlin. The greatest challenge was setting up the emulator. I chose Android Studio over Intellij IDEA, as the Android dev features will always be the latest relative to Android plugin in IntelliJ, it itself is a fork of IntelliJ optimized for Android development with an embedded JDK, Android hierarchy in project view, and new project wizard.
 
 
 	- imports (Row, Column, painter: contentDescription throwing error because previous line did not end in ',')

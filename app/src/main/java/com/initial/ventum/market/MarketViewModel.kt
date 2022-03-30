@@ -13,8 +13,13 @@ import kotlinx.coroutines.launch
 
 //
 class MarketViewModel : ViewModel() {
+    //
     private val _coinDataList = mutableStateListOf<CoinData>()
+
+    //
     var errorMessage: String by mutableStateOf("")
+
+    //
     val coinDataList: List<CoinData>
         get() = _coinDataList
 
@@ -22,12 +27,14 @@ class MarketViewModel : ViewModel() {
         viewModelScope.launch {
             val apiService = CoinApiService.getInstance()
             try {
+                //
                 _coinDataList.clear()
                 _coinDataList.addAll(apiService.getBtc())
                 _coinDataList.addAll(apiService.getEth())
                 _coinDataList.addAll(apiService.getSol())
 
             } catch (e: Exception) {
+                //
                 errorMessage = e.message.toString()
             }
         }

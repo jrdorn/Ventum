@@ -11,7 +11,7 @@ import com.initial.ventum.market.MarketView
 import com.initial.ventum.market.MarketViewModel
 import com.initial.ventum.ui.theme.VentumTheme
 
-// App entry point: sets initial view to activity_main, which contains a fragment to display the results of an API call
+// App entry point
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //

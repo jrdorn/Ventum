@@ -68,8 +68,3 @@ fun MarketView(vm: MarketViewModel) {
 
 }
 
-
-/***/
-
-/***/
-

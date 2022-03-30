@@ -33,10 +33,6 @@ import com.initial.ventum.network.CoinData
 fun MarketCard(crypto: CoinData) {
     // horizontal image with padding
 
-
-
-
-
     Row(modifier = Modifier.padding(all = 8.dp)) {
 
         // initialize drawable crypto logo and set to specific name
@@ -77,3 +73,23 @@ fun MarketCard(crypto: CoinData) {
         }
     }
 }
+
+/***/
+@Composable
+fun CoinPicker(
+    header: String,
+    names: List<String>,
+    onNameClicked: (String) -> Unit
+) {
+    Column {
+        Text(header, style = MaterialTheme.typography.h5)
+        Divider()
+
+        LazyColumn {
+            items(coins) { coin ->
+                NamePickerItem(coin, onCoinClicked)
+            }
+        }
+    }
+}
+/***/

@@ -73,23 +73,3 @@ fun MarketCard(crypto: CoinData) {
         }
     }
 }
-
-/***/
-@Composable
-fun CoinPicker(
-    header: String,
-    names: List<String>,
-    onNameClicked: (String) -> Unit
-) {
-    Column {
-        Text(header, style = MaterialTheme.typography.h5)
-        Divider()
-
-        LazyColumn {
-            items(coins) { coin ->
-                NamePickerItem(coin, onCoinClicked)
-            }
-        }
-    }
-}
-/***/

@@ -21,7 +21,9 @@ fund scientists researching and developing treatments to diseases affecting them
 
 ## Challenge notes
 
-Prior to Ventum I had never written code in Kotlin. The greatest challenge was setting up the emulator. I chose Android Studio over Intellij IDEA, as the Android dev features will always be the latest relative to Android plugin in IntelliJ, it itself is a fork of IntelliJ optimized for Android development with an embedded JDK, Android hierarchy in project view, and new project wizard.
+Prior to Ventum I had never written code in Kotlin. The greatest challenge was setting up the emulator; I've included a guide below to describe the setup I got it working in, with the hopes it could help someone else.
+
+I chose Android Studio over Intellij IDEA, as the Android dev features will always be the latest relative to Android plugin in IntelliJ, it itself is a fork of IntelliJ optimized for Android development with an embedded JDK, Android hierarchy in project view, and new project wizard.
 
 
 	- imports (Row, Column, painter: contentDescription throwing error because previous line did not end in ',')
@@ -63,7 +65,6 @@ Prior to Ventum I had never written code in Kotlin. The greatest challenge was s
 
 	Pixel 4 XL API 31
 
-	* Emulator
 	select hardware in the graphics drop down
 	x86_64 image
 	cold boot
@@ -87,7 +88,6 @@ Prior to Ventum I had never written code in Kotlin. The greatest challenge was s
 	Data Binding with binding adapters
 
 	coroutines and fragments
-
 
 	-types, similar to typescript
 

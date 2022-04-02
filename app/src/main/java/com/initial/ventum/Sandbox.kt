@@ -21,12 +21,29 @@ fun CoinPicker(
 
         LazyColumn {
             items(coins) { coin ->
-                CoinePickerItem(coin, onCoinClicked)
+                CoinPickerItem(coin, onCoinClicked)
             }
         }
     }
 }
 
 //
+data class Account (var balance: Int = 0)
+
+data class Message(val author: String, val body: String)
+
+@Composable
+fun MessageCard(msg: Message) {
+    Text(text = msg.author)
+    Text(text = msg.body)
+}
+
+@Preview
+@Composable
+fun PreviewMessageCard() {
+    MessageCard(
+        msg = Message("Author", "body text")
+    )
+}
 
 
